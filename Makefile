@@ -1,19 +1,28 @@
 NAME = push_swap
 BON = checker
 FLAGS = -Wall -Werror -Wextra
-SRCS = stack.c push_swap.c
+SRCS = stack.c push_swap.c pw_validators.c
+BON_SRCS = checker.c stack.c
+LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -O $(NAME)
+	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 clean:
-	make -C libft
+	make -C libft clean
+
+bonus: $(BON)
+	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(BON)
+
+$(BON) :
+	gcc $(FLAGS) $(SRCS) 
 
 fclean: clean
-	/bin/rm push_swap
-	/bin/rm checker
+	make -C libft fclean
+	/bin/rm -f push_swap
+	/bin/rm -f checker
 
 re: fclean all
 
