@@ -14,10 +14,9 @@ clean:
 	make -C libft clean
 
 bonus: $(BON)
-	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(BON)
 
-$(BON) :
-	gcc $(FLAGS) $(SRCS) 
+$(BON):
+	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(BON) 
 
 fclean: clean
 	make -C libft fclean
