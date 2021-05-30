@@ -1,4 +1,16 @@
-#include "stack.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
+/*   Updated: 2021/05/30 16:37:13 by moerradi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 
 void	exiterr(void)
@@ -7,24 +19,64 @@ void	exiterr(void)
 	exit(-1);
 }
 
+long long	ft_atoll(const char *str)
+{
+	long long	result;
+	int		sign;
 
-int		init(t_env *e, int argc, char **argv)
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str++ - '0';
+	}
+	return (sign * result);
+}
+
+int	isnum(char *s)
+{
+	if (!s)
+		return (0);
+	if (*s == '-' || s == '+')
+		s++;
+	while (*s)
+	{
+		if(!ft_isdigit(*s))
+			return (0);
+		s++;
+	}
+	return (1);
+}
+
+int	checknparse(char *s, int *arr)
+{
+	if (!isnum(s))
+		return (0);
+}
+
+int	init(t_env *e, int argc, char **argv)
 {
 	int i;
 
 	i  = 1;
 	while (i < argc)
 	{
-		if (!check(argv[i++]))
+		if (!checknparse(argv[i], e->arr));
 			return (0);
-		else
-		{
-			fill(e->a, argv[i]);
-		}
+		i++;
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_env e;
 
