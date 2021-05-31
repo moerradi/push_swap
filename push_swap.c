@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 15:03:25 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/05/31 21:11:19 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,12 @@ t_stack	*new_node(int n)
 	return (out);
 }
 
-
-void	add_back(t_stack **alst, t_stack *new)
-{
-	t_stack	*current;
-
-	if (!alst)
-		return ;
-	current = *alst;
-	if (current)
-	{
-		while (current->next)
-			current = current->next;
-		current->next = new;
-	}
-	else
-	{
-		*alst = new;
-	}
-}
-
 int	array_to_stack(t_env *e)
 {
 	int		i;
 	t_stack	*node;
 
-	e->a = new_node(e->arr[0]);
-	i = 1;
+	i = 0;
 	while (i < e->len)
 	{
 		node = new_node(e->arr[i++]);
@@ -90,6 +69,8 @@ int	init(t_env *e, char **argv)
 	int	i;
 
 	i = 1;
+	e->a = NULL;
+	e->b = NULL;
 	while (i < e->len + 1)
 	{
 		if (!checknparse(argv[i], &e->arr[i - 1]))
@@ -113,8 +94,18 @@ int	main(int argc, char **argv)
 		exiterr();
 	if (!init(&e, argv))
 		exiterr();
-	swap(e.a);
+	// push(&e.a, &e.b);
+	// push(&e.a, &e.b);
+	//swap(e.a);
+	// push(&e.b, &e.a);
+	// rotate(&e.a);
+	rotate(&e.b);
+	ft_putstr_fd("Stack a : ", 1);
 	print_stack(e.a);
+	//push(&e.b, &e.a);
+	ft_putstr_fd("Stack b : ", 1);
+	print_stack(e.b);
+	//print_stack(e.b);
 	//print_arr(&e);
 	//push_swap(e);
 	return (0);

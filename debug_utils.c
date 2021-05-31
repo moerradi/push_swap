@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:10:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 00:51:38 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:24:42 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void    print_arr(t_env *e)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < e->len)
-    {
-        ft_putnbr_fd(e->arr[i], 1);
-        ft_putstr_fd("\n", 1);
-        i++;
-    }
+	i = 0;
+	while (i < e->len)
+	{
+		ft_putnbr_fd(e->arr[i], 1);
+		ft_putstr_fd(" ", 1);
+		i++;
+	}
+	ft_putstr_fd("\n", 1);
+
 }
 
 void	print_stack(t_stack *stack)
@@ -35,7 +37,8 @@ void	print_stack(t_stack *stack)
 	while (temp)
 	{
 		ft_putnbr_fd(temp->n, 1);
-        ft_putstr_fd("\n", 1);
+		ft_putstr_fd(" ", 1);
 		temp = temp->next;
 	}
+	 ft_putstr_fd("\n", 1);
 }

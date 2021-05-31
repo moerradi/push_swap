@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 15:02:11 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/05/31 20:51:22 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,19 @@ typedef struct s_env
 	int				len;
 }					t_env;
 
-int	checknparse(char *s, int *arr);
-void    print_arr(t_env *e);
+void	exiterr(void);
+int		checknparse(char *s, int *arr);
+void	print_arr(t_env *e);
 void	print_stack(t_stack *stack);
-void    swap(t_stack *stack);
+t_stack	*new_node(int n);
+void	add_front(t_stack **stack, t_stack *new);
+void	add_back(t_stack **stack, t_stack *new);
+int		get_last(t_stack *stack);
+void	pop(t_stack **stack);
+void	pop_last(t_stack **stack);
+void	swap(t_stack *stack);
+void	push(t_stack **src, t_stack **dest);
+void	rotate(t_stack **stack);
+void	r_rotate(t_stack **stack);
 
 #endif
