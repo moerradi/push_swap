@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   pw_ops.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 22:08:05 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/30 22:08:06 by moerradi         ###   ########.fr       */
+/*   Created: 2021/05/31 14:34:18 by moerradi          #+#    #+#             */
+/*   Updated: 2021/05/31 15:01:35 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
-int main()
+void    swap(t_stack *stack)
 {
-    char test[1000];
-    printf("input your input : ");
-    scanf("%s", test);
-    printf("%s", test);
+	t_stack	*temp;
+	int		n;
+
+	temp = stack;
+	temp = temp->next;
+	n = temp->n;
+	temp->n = stack->n;
+	stack->n = n;
 }

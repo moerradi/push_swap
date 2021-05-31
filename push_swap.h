@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/30 17:57:07 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/05/31 15:02:11 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ typedef struct s_env
 }					t_env;
 
 int	checknparse(char *s, int *arr);
+void    print_arr(t_env *e);
+void	print_stack(t_stack *stack);
+void    swap(t_stack *stack);
 
 #endif
