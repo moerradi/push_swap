@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 12:01:36 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/01 16:54:36 by moerradi         ###   ########.fr       */
+/*   Created: 2021/05/31 23:53:23 by moerradi          #+#    #+#             */
+/*   Updated: 2021/05/31 23:58:37 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_strchr_s(const char *s, int c)
 {
-	size_t				i;
-	const unsigned char	*tempsrc;
-	unsigned char		*tempdst;
-
-	i = 0;
-	tempsrc = (unsigned char *)src;
-	tempdst = (unsigned char *)dst;
-	while (i < n)
+	if (s == NULL)
+		return (NULL);
+	while (*s)
 	{
-		*tempdst = *tempsrc;
-		if (*tempdst == (unsigned char)c)
-			return (tempdst + 1);
-		tempdst++;
-		tempsrc++;
-		i++;
+		if (*s == c)
+			return ((char *)s);
+		s++;
 	}
-	return (NULL);
+	if (c == '\0')
+		return ((char *)s);
+	else
+		return (NULL);
 }
