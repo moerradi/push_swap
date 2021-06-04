@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 20:51:22 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/04 13:08:45 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ void	swap(t_stack *stack);
 void	push(t_stack **src, t_stack **dest);
 void	rotate(t_stack **stack);
 void	r_rotate(t_stack **stack);
+void	ss(t_env *e);
+void	rr(t_env *e);
+void	rrr(t_env *e);
+
 
 #endif
