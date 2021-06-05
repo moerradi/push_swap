@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 13:07:50 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/04 13:08:12 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/04 16:35:28 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,21 @@ void	rrr(t_env *e)
 {
 	r_rotate(&e->a);
 	r_rotate(&e->b);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	if (stack)
+	{
+		size = 1;
+		while (stack->next)
+		{
+			stack = stack->next;
+			size++;
+		}
+	}
+	return (size);
 }

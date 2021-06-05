@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:08:05 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/04 13:25:36 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/04 17:00:42 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	is_sorted(t_stack *stack)
 {
-	
+	if (stack == NULL || stack->next == NULL)
+		return (1);
+	return ((stack->n < stack->next->n) && is_sorted(stack->next));
 }
 
-void	ops_router(t_env *e, char *line)
+void	exec_ops(t_env *e, char *line)
 {
 	if (!ft_strcmp(line,"sa"))
 		swap(e->a);
@@ -57,15 +59,9 @@ int main(int argc, char **argv)
 	if (!init(&e, argv))
 		exiterr();
 	while (get_next_line(1, &line) > 0)
-	{
-		ops_router(&e, &line);
-	}
-	if (is_sorted(e->a))
-	{
-		
-	}
+		exec_ops(&e, line);
+	if (is_sorted(e.a) && stack_size(e.a) == e.len)
+		ft_putstr_fd("OK\n", 1);
 	else
-	{
-		
-	}
+		ft_putstr_fd("KO\n", 1);
 }
