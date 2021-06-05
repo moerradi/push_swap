@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 12:57:09 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/05 12:58:31 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/05 13:16:24 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	has_dup(t_env *e)
 	return (0);
 }
 
-static t_stack	*new_node(int n)
+t_stack	*new_node(int n)
 {
 	t_stack	*out;
 

@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:34:18 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 20:57:16 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/05 13:14:28 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void    swap(t_stack *stack)
 void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*new;
-	t_stack	*temp;
 
 	if (*src == NULL)
 		return ;
@@ -40,7 +39,6 @@ void	push(t_stack **src, t_stack **dest)
 
 void	rotate(t_stack **stack)
 {
-	t_stack	*temp;
 	t_stack	*new;
 
 	if (*stack == NULL || (*stack)->next == NULL)
@@ -52,7 +50,6 @@ void	rotate(t_stack **stack)
 
 void	r_rotate(t_stack **stack)
 {
-	t_stack	*temp;
 	t_stack	*new;
 
 	if (*stack == NULL || (*stack)->next == NULL)

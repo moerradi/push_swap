@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 12:33:03 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/04 12:36:13 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/05 13:21:23 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	size_t	i;
 
 	i = 0;
-	while (s1[i] && s2[i])
+	while (s1[i])
 	{
 		if (s1[i] == s2[i])
 			i++;
