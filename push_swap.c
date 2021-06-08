@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/05 12:58:41 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/08 03:29:48 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ int	main(int argc, char **argv)
 	// push(&e.b, &e.a);
 	// rotate(&e.a);
 	//rotate(&e.b);
-	ft_putstr_fd("Stack a : ", 1);
-	print_stack(e.a);
-	//push(&e.b, &e.a);
-	ft_putstr_fd("Stack b : ", 1);
-	print_stack(e.b);
+	// ft_putstr_fd("Stack a : ", 1);
+	// print_stack(e.a);
+	// //push(&e.b, &e.a);
+	// ft_putstr_fd("Stack b : ", 1);
+	// print_stack(e.b);
 	//print_stack(e.b);
 	//print_arr(&e);
 	//push_swap(e);
+	go(&e);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 12:57:09 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/05 13:16:24 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/08 03:16:04 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_stack	*new_node(int n)
 {
 	t_stack	*out;
 
-	out = (t_stack *)malloc(sizeof(t_list));
+	out = (t_stack *)malloc(sizeof(t_stack));
 	if (!out)
 		return (NULL);
 	out->n = n;
@@ -59,6 +59,9 @@ static int	array_to_stack(t_env *e)
 	while (i < e->len)
 	{
 		node = new_node(e->arr[i++]);
+		if (!node)
+			return (0);
+		node->chunk = 0;
 		add_back(&e->a, node);
 	}
 	return (1);

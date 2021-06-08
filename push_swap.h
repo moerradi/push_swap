@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/05 13:17:32 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/08 03:27:28 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_stack
 {
 	int				n;
+	int				chunk;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -52,6 +53,9 @@ void	r_rotate(t_stack **stack);
 void	ss(t_env *e);
 void	rr(t_env *e);
 void	rrr(t_env *e);
+void	swap_val(int *xp, int *yp);
+void	go(t_env *e);
+
 
 
 #endif

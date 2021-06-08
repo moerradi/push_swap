@@ -1,55 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mosa3ada.c                                         :+:      :+:    :+:   */
+/*   sorting_algo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:07:50 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/08 02:31:59 by moerradi         ###   ########.fr       */
+/*   Created: 2021/06/07 20:03:21 by moerradi          #+#    #+#             */
+/*   Updated: 2021/06/08 03:35:17 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ss(t_env *e)
+ 
+void	sort_array(int *arr, int len)
 {
-	swap(e->a);
-	swap(e->b);
-}
+	int	i;
+	int	j;
 
-void	rr(t_env *e)
-{
-	rotate(&e->a);
-	rotate(&e->b);
-}
-
-void	rrr(t_env *e)
-{
-	r_rotate(&e->a);
-	r_rotate(&e->b);
-}
-
-int	stack_size(t_stack *stack)
-{
-	int	size;
-
-	size = 0;
-	if (stack)
+	i = 0;
+	while (i < len - 1)
 	{
-		size = 1;
-		while (stack->next)
+		j = 0;
+		while (j < len - i - 1)
 		{
-			stack = stack->next;
-			size++;
+			if (arr[j] > arr[j + 1])
+				swap_val(&arr[j], &arr[j + 1]);
+			j++;
 		}
+		i++;
 	}
-	return (size);
 }
 
-void swap_val(int *xp, int *yp)
+void	go(t_env *e)
 {
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	sort_array(e->arr, e->len);
+	print_arr(e);
 }

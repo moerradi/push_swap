@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:34:18 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/05 13:14:28 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/07 18:27:38 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push(t_stack **src, t_stack **dest)
 	if (*src == NULL)
 		return ;
 	new = new_node((*src)->n);
-	add_back(dest, new);
+	add_front(dest, new);
 	pop(src);
 }
 
