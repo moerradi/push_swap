@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/08 03:27:28 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/09 11:08:15 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 # include <stdbool.h>
 # include "libft/libft.h"
 # define	INT_MAX 2147483647
@@ -37,17 +38,17 @@ typedef struct s_env
 void	exiterr(void);
 int		checknparse(char *s, int *arr);
 int		init(t_env *e, char **argv);
-void	print_arr(t_env *e);
+void    print_arr(int *arr, int len);
 void	print_stack(t_stack *stack);
-t_stack	*new_node(int n);
+t_stack	*new_node(int n, int chunk);
 void	add_front(t_stack **stack, t_stack *new);
 void	add_back(t_stack **stack, t_stack *new);
-int		get_last(t_stack *stack);
+t_stack	*get_last(t_stack *stack);
 int		stack_size(t_stack *stack);
 void	pop(t_stack **stack);
 void	pop_last(t_stack **stack);
 void	swap(t_stack *stack);
-void	push(t_stack **src, t_stack **dest);
+void	push(t_stack **src, t_stack **dest, int chunk);
 void	rotate(t_stack **stack);
 void	r_rotate(t_stack **stack);
 void	ss(t_env *e);

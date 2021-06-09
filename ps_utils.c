@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 18:33:14 by moerradi          #+#    #+#             */
-/*   Updated: 2021/05/31 21:09:42 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/09 10:53:36 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ void	pop_last(t_stack **stack)
 	free(last);
 }
 
-int	get_last(t_stack *stack)
+t_stack	*get_last(t_stack *stack)
 {
+	t_stack *temp;
+
+	temp = stack;
 	if (!stack)
-		exiterr();
-	while (stack->next)
-		stack = stack->next;
-	return (stack->n);
+		return (NULL);
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }
 
 void	add_front(t_stack **stack, t_stack *new)
