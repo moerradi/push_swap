@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:03:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/09 20:55:10 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/09 21:16:29 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ int	rotate_optimizer(t_stack *stack, int chunk, int pivot)
 	i = 0;
 	r = stack_dup(stack);
 	rr = stack_dup(stack);
-	rc = keep_rotating(&r, chunk, pivot, 1, false);
-	rrc = keep_rotating(&rr, chunk, pivot, 0, false);
+	rc = keep_rotating(&r, pivot, chunk, 1, false);
+	rrc = keep_rotating(&rr, pivot, chunk, 0, false);
 	//free stacks
 	return ((rc > rrc));
 }
