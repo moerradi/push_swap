@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 11:33:45 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 15:33:12 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ t_stack	*get_last(t_stack *stack);
 int		stack_size(t_stack *stack);
 void	pop(t_stack **stack);
 void	pop_last(t_stack **stack);
-void	swap(t_stack *stack);
-void	push(t_stack **src, t_stack **dest, int chunk);
-void	rotate(t_stack **stack);
-void	r_rotate(t_stack **stack);
+void	swap(t_stack *stack, char name);
+void	push(t_stack **src, t_stack **dest, int chunk, char name);
+void	rotate(t_stack **stack, char name);
+void	r_rotate(t_stack **stack, char name);
 void	ss(t_env *e);
 void	rr(t_env *e);
 void	rrr(t_env *e);

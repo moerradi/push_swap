@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:08:05 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 08:20:07 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 18:17:22 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 void	exec_ops(t_env *e, char *line)
 {
 	if (!ft_strcmp(line,"sa"))
-		swap(e->a);
+		swap(e->a, 0);
 	else if (!ft_strcmp(line, "sb"))
-		swap(e->b);
+		swap(e->b, 0);
 	else if (!ft_strcmp(line, "ss"))
 		ss(e);
 	else if (!ft_strcmp(line, "pa"))
-		push(&e->a, &e->b, 0);
+		push(&e->b, &e->a, 0, 0);
 	else if (!ft_strcmp(line, "pb"))
-		push(&e->b, &e->a, 0);
+		push(&e->a, &e->b, 0, 0);
 	else if (!ft_strcmp(line, "ra"))
-		rotate(&e->a);
+		rotate(&e->a, 0);
 	else if (!ft_strcmp(line, "rb"))
-		rotate(&e->b);
+		rotate(&e->b, 0);
 	else if (!ft_strcmp(line, "rr"))
 		rr(e);
 	else if (!ft_strcmp(line, "rra"))
-		r_rotate(&e->a);
+		r_rotate(&e->a, 0);
 	else if (!ft_strcmp(line, "rrb"))
-		r_rotate(&e->b);
+		r_rotate(&e->b, 0);
 	else if (!ft_strcmp(line, "rrr"))
 		rrr(e);
 	else
@@ -51,8 +51,15 @@ int main(int argc, char **argv)
 		exiterr();
 	if (!init(&e, argv))
 		exiterr();
-	while (get_next_line(1, &line) > 0)
+	while (get_next_line(0, &line))
+	{
+		// if (!*line)
+		// 	break ;
 		exec_ops(&e, line);
+		free(line);
+		line = NULL;
+	}
+	free(line);
 	if (is_sorted(e.a, 0) && stack_size(e.a) == e.len)
 		ft_putstr_fd("OK\n", 1);
 	else

@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:56:08 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/04 16:34:46 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 15:59:49 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ int	checknparse(char *s, int *arr)
 	long long	tmp;
 
 	if (!isnum(s))
+	{
+		ft_putstr_fd(s, 1);
+		ft_putendl_fd("", 1);
 		return (0);
+	}
 	tmp = ft_atoll(s);
 	if (tmp > INT_MAX || tmp < INT_MIN)
 		return (0);

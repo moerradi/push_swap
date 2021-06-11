@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 11:21:56 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/04 12:36:29 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 16:51:54 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ULILMIT 1025
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 1
 # endif
 
 typedef struct s_list

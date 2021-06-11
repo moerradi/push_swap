@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 09:35:40 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 15:56:32 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ int	main(int argc, char **argv)
 	e.len = argc - 1;
 	e.arr = malloc(sizeof(int) * e.len);
 	if (argc < 2)
+	{
+		ft_putendl_fd("here ??", 1);
 		exiterr();
+	}
 	if (!init(&e, argv))
+	{
+		ft_putendl_fd("or here ??", 1);
 		exiterr();
+	}
 	// push(&e.a, &e.b, 0);
 	// push(&e.a, &e.b);
 	//swap(e.a);
