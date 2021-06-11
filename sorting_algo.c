@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:03:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 12:21:49 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 13:04:41 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		*chunk_to_array(t_stack *stack, int chunk)
 	i = 0;
 	while(temp)
 	{
-		if (stack->chunk == chunk)
+		if (temp->chunk == chunk)
 			ret[i] = temp->n;
 		i++;
 		temp = temp->next;
@@ -79,6 +79,8 @@ int		get_pivot(t_stack *stack, int chunk)
 	arr = chunk_to_array(stack, chunk);
 	sort_array(arr, len);
 	ret = arr[len / 2];
+	ft_putnbr_fd(ret, 1);
+	ft_putstr_fd("\n", 1);
 	free(arr);
 	return (ret);
 }
@@ -246,13 +248,13 @@ void	go(t_env *e)
 	chunk = 1;
 	while (!is_sorted(e->a, 0) || stack_size(e->a) != e->len)
 	{
-		ft_putnbr_fd(chunk_is_sorted(e->a, e->a->chunk, 0), 1);
-		ft_putstr_fd("\n stack a :", 1);
-		print_stack(e->a);
-		if (e->b)
-			ft_putnbr_fd(chunk_is_sorted(e->b, e->b->chunk, 1), 1);
-		ft_putstr_fd("\n stack b :", 1);
-		print_stack(e->b);
+		// ft_putnbr_fd(chunk_is_sorted(e->a, e->a->chunk, 0), 1);
+		// ft_putstr_fd("\n stack a :", 1);
+		// print_stack(e->a);
+		// if (e->b)
+		// 	ft_putnbr_fd(chunk_is_sorted(e->b, e->b->chunk, 1), 1);
+		// ft_putstr_fd("\n stack b :", 1);
+		// print_stack(e->b);
 		rn = 0;
 		if (!chunk_is_sorted(e->a, e->a->chunk, 0))
 		{
@@ -281,18 +283,21 @@ void	go(t_env *e)
 			}
 			else
 			{
+				ft_putstr_fd("9wada before: ", 1);
+				print_stack(e->b);
+				ft_putstr_fd("\n", 1);
 				pivot = get_pivot(e->b, e->b->chunk);
-				ft_putstr_fd("pivot : ", 1);
-				ft_putnbr_fd(pivot, 1);
+				ft_putstr_fd("9wada after: ", 1);
+				print_stack(e->b);
 				ft_putstr_fd("\n", 1);
 				while (still(e->b, e->b->chunk, pivot, 1))
 				{
 					rn += keep_rotating2(&e->b, pivot, 1, false);
 					push(&e->b, &e->a, chunk);
 				}
-				ft_putstr_fd("rn : ", 1);
-				ft_putnbr_fd(rn, 1);
-				ft_putstr_fd("\n", 1);
+				// ft_putstr_fd("rn : ", 1);
+				// ft_putnbr_fd(rn, 1);
+				// ft_putstr_fd("\n", 1);
 				rev (&e->b, rn, false);
 				chunk++;
 			}
