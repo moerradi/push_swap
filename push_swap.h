@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/09 11:08:15 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 11:33:45 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_env
 }					t_env;
 
 void	exiterr(void);
+bool	is_sorted(t_stack *stack, bool order);
+bool	chunk_is_sorted(t_stack *stack, int chunk, bool order);
 int		checknparse(char *s, int *arr);
 int		init(t_env *e, char **argv);
 void    print_arr(int *arr, int len);

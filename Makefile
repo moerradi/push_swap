@@ -6,7 +6,7 @@
 #    By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/05 13:23:46 by moerradi          #+#    #+#              #
-#    Updated: 2021/06/07 18:30:51 by moerradi         ###   ########.fr        #
+#    Updated: 2021/06/11 08:21:53 by moerradi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BON = checker
 FLAGS = -Wall -Werror -Wextra
 SRCS = push_swap.c pw_validators.c
 BON_SRCS = checker.c ps_utils.c ps_ops.c mosa3ada.c general_utils.c \
-		ps_validators.c
+		ps_validators.c is_sorted.c
 LIBFT = ./libft/libft.a
 
 all: $(NAME)

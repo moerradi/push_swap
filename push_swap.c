@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/09 11:06:14 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 09:35:40 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		exiterr();
 	if (!init(&e, argv))
 		exiterr();
-	// push(&e.a, &e.b);
+	// push(&e.a, &e.b, 0);
 	// push(&e.a, &e.b);
 	//swap(e.a);
 	// push(&e.a, &e.b, 1);

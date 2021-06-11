@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:03:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/09 21:16:29 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:21:49 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		chunk_len(t_stack *stack, int chunk)
 	len = 0;
 	while(temp)
 	{
-		if (stack->chunk == chunk)
+		if (temp->chunk == chunk)
 			len++;
 		temp = temp->next;
 	}
@@ -75,6 +75,7 @@ int		get_pivot(t_stack *stack, int chunk)
 	int	ret;
 
 	len = chunk_len(stack, chunk);
+		
 	arr = chunk_to_array(stack, chunk);
 	sort_array(arr, len);
 	ret = arr[len / 2];
@@ -98,15 +99,15 @@ t_stack	*stack_dup(t_stack *head)
 	}
 }
 
-int	keep_rotating(t_stack **stack, int pivot, int chunk, int dir, bool v)
+int	keep_rotating2(t_stack **stack, int pivot, int dir, bool v)
 {
 	int	c;
 	int	size;
+	bool tstya;
 
 	size = stack_size(*stack);
 	c = 0;
-
-	while ((*stack)->n >= pivot && c < size)
+	while (((*stack)->n <= pivot) && c < size)
 	{
 		if (v && dir)
 			ft_putendl_fd("r", 1);
@@ -116,61 +117,97 @@ int	keep_rotating(t_stack **stack, int pivot, int chunk, int dir, bool v)
 			rotate(stack);
 		else
 			r_rotate(stack);
-
 		c++;
 	}
 	return (c);
 }
 
-int	rotate_optimizer(t_stack *stack, int chunk, int pivot)
+int	keep_rotating(t_stack **stack, int pivot, int dir, bool v)
 {
-	t_stack	*r;
-	t_stack	*rr;
-	int		rc;
-	int		rrc;
-	int		i;
+	int	c;
+	int	size;
+	bool tstya;
 
-	i = 0;
-	r = stack_dup(stack);
-	rr = stack_dup(stack);
-	rc = keep_rotating(&r, pivot, chunk, 1, false);
-	rrc = keep_rotating(&rr, pivot, chunk, 0, false);
-	//free stacks
-	return ((rc > rrc));
+	size = stack_size(*stack);
+	c = 0;
+	while (((*stack)->n >= pivot) && c < size)
+	{
+		if (v && dir)
+			ft_putendl_fd("r", 1);
+		else if (v && !dir)
+			ft_putendl_fd("rr", 1);
+		if (dir)
+			rotate(stack);
+		else
+			r_rotate(stack);
+		c++;
+	}
+	return (c);
 }
 
-bool	still(t_stack *stack, int pivot)
+// int	rotate_optimizer(t_stack *stack, int chunk, int pivot)
+// {
+// 	t_stack	*r;
+// 	t_stack	*rr;
+// 	int		rc;
+// 	int		rrc;
+// 	int		i;
+
+// 	i = 0;
+// 	r = stack_dup(stack);
+// 	rr = stack_dup(stack);
+// 	rc = keep_rotating(&r, pivot, 1, false);
+// 	rrc = keep_rotating(&rr, pivot, 0, false);
+// 	//free stacks
+// 	return ((rc < rrc));
+// }
+
+bool	still(t_stack *stack, int chunk, int pivot, bool order)
 {
 	t_stack	*temp;
 
 	temp = stack;
-	while (temp)
+	while (temp && temp->chunk == chunk)
 	{
-		if (temp->n < pivot)
-			return (true);
+		if (!order)
+		{
+			if (temp->n < pivot)
+				return (true);
+		}
+		else
+		{
+			if (temp->n > pivot)
+				return (true);
+		}
 		temp = temp->next;
 	}
 	return (false);
 }
 
-void	sort_3(t_stack **stack, bool order)
+void	sort_rest(t_stack **stack, bool order)
 {
+	int	len;
 
+	len = stack_size(*stack);
 	if (!order)
 	{
 		if ((*stack)->next->n < (*stack)->n)
 			swap(*stack);
+		if (len == 2)
+			return ;
 		if ((*stack)->next->next->n < (*stack)->next->n)
 		{
 			r_rotate(stack);
 			if ((*stack)->next->n < (*stack)->n)
 				swap(*stack);
-		}	
+		}
 	}
 	else
 	{
 		if ((*stack)->next->n > (*stack)->n)
 			swap(*stack);
+		if (len == 2)
+			return ;
 		if ((*stack)->next->next->n > (*stack)->next->n)
 		{
 			r_rotate(stack);
@@ -180,46 +217,90 @@ void	sort_3(t_stack **stack, bool order)
 	}
 }
 
+void	rev(t_stack **stack, int times, bool v)
+{
+	int	c;
+	
+	c = 0;
+	while (c < times)
+	{
+		if (v)
+			ft_putendl_fd("rr", 1);
+		r_rotate(stack);
+		c++;
+	}
+}
+
+int		keep_pushing(t_stack **src, t_stack **dest, int chunk)
+{
+	while ((*src) && (*src)->chunk == chunk)
+		push(src, dest, chunk);
+}
+
 void	go(t_env *e)
 {
 	int		pivot;
-	t_stack *temp;
 	int		chunk;
 	int		rn;
 
-	rn = 0;
-	temp = e->a;
 	chunk = 1;
-	while (stack_size(e->a) > 3)
+	while (!is_sorted(e->a, 0) || stack_size(e->a) != e->len)
 	{
-		pivot = get_pivot(e->a, 0);
-		ft_putnbr_fd(pivot, 1);
-		while (still(e->a, pivot))
+		ft_putnbr_fd(chunk_is_sorted(e->a, e->a->chunk, 0), 1);
+		ft_putstr_fd("\n stack a :", 1);
+		print_stack(e->a);
+		if (e->b)
+			ft_putnbr_fd(chunk_is_sorted(e->b, e->b->chunk, 1), 1);
+		ft_putstr_fd("\n stack b :", 1);
+		print_stack(e->b);
+		rn = 0;
+		if (!chunk_is_sorted(e->a, e->a->chunk, 0))
 		{
-			keep_rotating(&e->a, pivot, 0, rotate_optimizer(e->a, 0, pivot), true);
-			push(&e->a, &e->b, chunk);	ft_putstr_fd("\n stack a :", 1);
-			print_stack(e->a);
-			ft_putstr_fd("\n stack b :", 1);
-			print_stack(e->b);
+			if (chunk_len(e->a, e->a->chunk) == 2)
+				swap(e->a);
+			else
+			{
+				pivot = get_pivot(e->a, e->a->chunk);
+				while (still(e->a, e->a->chunk, pivot, 0))
+				{
+					rn += keep_rotating(&e->a, pivot, 1, false);
+					push(&e->a, &e->b, chunk);
+				}
+				rev(&e->a, rn, false);
+				chunk++;
+			}
 		}
-		chunk++;
+		else
+		{
+			if (chunk_is_sorted(e->b, e->b->chunk, 1))
+				keep_pushing(&e->b, &e->a, e->b->chunk);
+			else if (chunk_len(e->b, e->b->chunk) == 2)
+			{
+				swap(e->b);
+				keep_pushing(&e->b, &e->a, e->b->chunk);
+			}
+			else
+			{
+				pivot = get_pivot(e->b, e->b->chunk);
+				ft_putstr_fd("pivot : ", 1);
+				ft_putnbr_fd(pivot, 1);
+				ft_putstr_fd("\n", 1);
+				while (still(e->b, e->b->chunk, pivot, 1))
+				{
+					rn += keep_rotating2(&e->b, pivot, 1, false);
+					push(&e->b, &e->a, chunk);
+				}
+				ft_putstr_fd("rn : ", 1);
+				ft_putnbr_fd(rn, 1);
+				ft_putstr_fd("\n", 1);
+				rev (&e->b, rn, false);
+				chunk++;
+			}
+		}
 	}
-	chunk--;
-	sort_3(&e->a, 0);
-	// while (stack_size(e->b) > 3)
-	// {
-	// 	pivot = get_pivot(e->b, chunk);
-	// 	while (still(e->a, pivot))
-	// 	{
-	// 		if ()
-	// 		rn += keep_rotating(&e->a, chunk, pivot, 1, true);
-	// 		push(&e->b, &e->a, chunk);
-	// 	}
-	// 	chunk--;
-	// }
-	//ft_putnbr_fd(pivot, 1);
-	// ft_putstr_fd("\n stack a :", 1);
-	// print_stack(e->a);
-	// ft_putstr_fd("\n stack b :", 1);
-	// print_stack(e->b);
+	ft_putnbr_fd(pivot, 1);
+	ft_putstr_fd("\n stack a :", 1);
+	print_stack(e->a);
+	ft_putstr_fd("\n stack b :", 1);
+	print_stack(e->b);
 }
