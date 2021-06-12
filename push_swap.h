@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 15:33:12 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/12 20:36:52 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,14 @@ void	ss(t_env *e);
 void	rr(t_env *e);
 void	rrr(t_env *e);
 void	swap_val(int *xp, int *yp);
+void	keep_pushing(t_stack **src, t_stack **dest, int chunk, char v);
+bool	solo_chunk(t_stack *stack);
+int		chunk_len(t_stack *stack, int chunk);
+int		keep_rotating(t_stack **stack, int pivot, int dir, char v);
+int		keep_rotating2(t_stack **stack, int pivot, int dir, char v);
+int		rotate_optimizer(t_stack *stack, int pivot, int dir);
+void	rev(t_stack **stack, int times, char v);
+int		get_pivot(t_stack *stack, int chunk);
 void	go(t_env *e);
-
-
 
 #endif
