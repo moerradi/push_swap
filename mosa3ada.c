@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 13:07:50 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 15:36:15 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 01:58:34 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,18 @@ int	stack_size(t_stack *stack)
 	return (size);
 }
 
-void swap_val(int *xp, int *yp)
+void	free_stack(t_stack **stack)
 {
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	t_stack	*current;
+	t_stack	*next;
+
+	current = *stack;
+	next = NULL;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*stack = NULL;
 }

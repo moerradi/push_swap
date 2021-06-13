@@ -6,13 +6,13 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 14:34:18 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 15:32:05 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 05:12:38 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    swap(t_stack *stack, char name)
+void	swap(t_stack *stack, char name)
 {
 	t_stack	*temp;
 	int		n;
@@ -33,7 +33,6 @@ void    swap(t_stack *stack, char name)
 		ft_putchar_fd(name, 1);
 		ft_putstr_fd("\n", 1);
 	}
-	
 }
 
 void	push(t_stack **src, t_stack **dest, int chunk, char name)
@@ -43,8 +42,6 @@ void	push(t_stack **src, t_stack **dest, int chunk, char name)
 	if (*src == NULL)
 		return ;
 	new = new_node((*src)->n, chunk);
-	if (!new)
-		exiterr();
 	add_front(dest, new);
 	pop(src);
 	if (name)
@@ -62,8 +59,6 @@ void	rotate(t_stack **stack, char name)
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	new = new_node(((*stack)->n), (*stack)->chunk);
-	if (!new)
-		exiterr();
 	add_back(stack, new);
 	pop(stack);
 	if (name)
@@ -77,7 +72,7 @@ void	rotate(t_stack **stack, char name)
 void	r_rotate(t_stack **stack, char name)
 {
 	t_stack	*new;
-	t_stack *last;
+	t_stack	*last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;

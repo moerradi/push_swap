@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 20:24:31 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/12 20:28:17 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 04:41:09 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static t_stack	*stack_dup(t_stack *head)
 {
-	t_stack* node;
+	t_stack	*node;
 
 	if (!head)
-		return NULL;
+		return (NULL);
 	else
 	{
 		node = (t_stack *)malloc(sizeof(t_stack));
 		node->n = head->n;
 		node->chunk = head->chunk;
 		node->next = stack_dup(head->next);
-		return node;
+		return (node);
 	}
 }
 
@@ -64,15 +64,13 @@ int	keep_rotating(t_stack **stack, int pivot, int dir, char v)
 	return (c);
 }
 
-int	rotate_optimizer(t_stack *stack, int pivot, int dir)
+int	optimize_rot(t_stack *stack, int pivot, int dir)
 {
 	t_stack	*r;
 	t_stack	*rr;
 	int		rc;
 	int		rrc;
-	int		i;
 
-	i = 0;
 	r = stack_dup(stack);
 	rr = stack_dup(stack);
 	if (!dir)
@@ -85,14 +83,15 @@ int	rotate_optimizer(t_stack *stack, int pivot, int dir)
 		rc = keep_rotating2(&r, pivot, 1, 0);
 		rrc = keep_rotating2(&rr, pivot, 0, 0);
 	}
-	//free stacks
+	free_stack(&r);
+	free_stack(&rr);
 	return ((rc < rrc));
 }
 
 void	rev(t_stack **stack, int times, char v)
 {
 	int	c;
-	
+
 	c = 0;
 	while (c < times)
 	{

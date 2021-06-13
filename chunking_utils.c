@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 20:20:54 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/12 20:30:26 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 00:31:09 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ bool	solo_chunk(t_stack *stack)
 	return (true);
 }
 
-int		chunk_len(t_stack *stack, int chunk)
+int	chunk_len(t_stack *stack, int chunk)
 {
 	t_stack	*temp;
 	int		len;
 
 	temp = stack;
 	len = 0;
-	while(temp)
+	while (temp)
 	{
 		if (temp->chunk == chunk)
 			len++;

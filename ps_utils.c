@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 18:33:14 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 11:52:43 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 00:29:57 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	pop_last(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*last;
-	
+
 	if (*stack == NULL)
 		return ;
 	temp = *stack;
@@ -40,7 +40,7 @@ void	pop_last(t_stack **stack)
 
 t_stack	*get_last(t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = stack;
 	if (!stack)

@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/12 20:36:52 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 05:11:33 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ typedef struct s_env
 	int				len;
 }					t_env;
 
-void	exiterr(void);
+void	exiterr(t_env *e);
 bool	is_sorted(t_stack *stack, bool order);
 bool	chunk_is_sorted(t_stack *stack, int chunk, bool order);
 int		checknparse(char *s, int *arr);
 int		init(t_env *e, char **argv);
-void    print_arr(int *arr, int len);
+void	print_arr(int *arr, int len);
 void	print_stack(t_stack *stack);
 t_stack	*new_node(int n, int chunk);
 void	add_front(t_stack **stack, t_stack *new);
@@ -56,15 +56,16 @@ void	r_rotate(t_stack **stack, char name);
 void	ss(t_env *e);
 void	rr(t_env *e);
 void	rrr(t_env *e);
-void	swap_val(int *xp, int *yp);
 void	keep_pushing(t_stack **src, t_stack **dest, int chunk, char v);
 bool	solo_chunk(t_stack *stack);
 int		chunk_len(t_stack *stack, int chunk);
 int		keep_rotating(t_stack **stack, int pivot, int dir, char v);
 int		keep_rotating2(t_stack **stack, int pivot, int dir, char v);
-int		rotate_optimizer(t_stack *stack, int pivot, int dir);
+int		optimize_rot(t_stack *stack, int pivot, int dir);
 void	rev(t_stack **stack, int times, char v);
 int		get_pivot(t_stack *stack, int chunk);
+void	free_stack(t_stack **stack);
+void	sort_rest(t_stack **stack, int len, bool order, char name);
 void	go(t_env *e);
 
 #endif

@@ -6,15 +6,19 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 12:57:09 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 15:58:36 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 02:02:17 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	exiterr(void)
+void	exiterr(t_env *e)
 {
 	write(2, "Error\n", 6);
+	if (e->a)
+		free_stack(&e->a);
+	if (e->b)
+		free_stack(&e->b);
 	exit(-1);
 }
 
@@ -83,6 +87,6 @@ int	init(t_env *e, char **argv)
 	if (has_dup(e))
 		return (0);
 	if (!array_to_stack(e))
-		return(0);
+		return (0);
 	return (1);
 }

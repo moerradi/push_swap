@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:08:05 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/11 18:17:22 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 05:14:37 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_ops(t_env *e, char *line)
 {
-	if (!ft_strcmp(line,"sa"))
+	if (!ft_strcmp(line, "sa"))
 		swap(e->a, 0);
 	else if (!ft_strcmp(line, "sb"))
 		swap(e->b, 0);
@@ -37,24 +37,22 @@ void	exec_ops(t_env *e, char *line)
 	else if (!ft_strcmp(line, "rrr"))
 		rrr(e);
 	else
-		exiterr();
+		exiterr(e);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_env e;
-	char *line;
+	t_env	e;
+	char	*line;
 
 	e.len = argc - 1;
 	e.arr = malloc(sizeof(int) * e.len);
 	if (argc < 2)
-		exiterr();
+		exiterr(&e);
 	if (!init(&e, argv))
-		exiterr();
+		exiterr(&e);
 	while (get_next_line(0, &line))
 	{
-		// if (!*line)
-		// 	break ;
 		exec_ops(&e, line);
 		free(line);
 		line = NULL;
