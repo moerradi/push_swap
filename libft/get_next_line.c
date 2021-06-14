@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:56:29 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/01 16:35:46 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/13 20:56:39 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,19 @@ static char	*buffered_read(const int fd, char *rest)
 	return (rest);
 }
 
-static int	gnl_helper(int newline_pos, char *temp, char *rest, char **line)
+static int	gnl_helper(char *temp, char **rest, char **line, int fd)
 {
-	newline_pos = temp - rest;
+	int	newline_pos;
+
+	newline_pos = temp - rest[fd];
 	temp = ft_strdup(temp + 1);
-	*line = ft_strndup(rest, newline_pos);
+	*line = ft_strndup(rest[fd], newline_pos);
 	if (!temp || !(*line))
 		return (-1);
-	free(rest);
-	rest = ft_strdup(temp);
+	free(rest[fd]);
+	rest[fd] = ft_strdup(temp);
 	free(temp);
+	temp = NULL;
 	return (1);
 }
 
@@ -63,15 +66,13 @@ int	get_next_line(int fd, char **line)
 {
 	char			*temp;
 	static char		*rest[ULILMIT];
-	int				newline_pos;
 
-	newline_pos = 0;
 	rest[fd] = buffered_read(fd, rest[fd]);
-	if (!rest[fd])
+	if (!(rest[fd]))
 		return (-1);
 	temp = ft_strchr_s(rest[fd], '\n');
-	if (temp)
-		return (gnl_helper(newline_pos, temp, rest[fd], line));
+	if (temp > 0)
+		return (gnl_helper(temp, rest, line, fd));
 	else
 	{
 		*line = ft_strdup(rest[fd]);

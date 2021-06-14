@@ -6,13 +6,13 @@
 #    By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/05 13:23:46 by moerradi          #+#    #+#              #
-#    Updated: 2021/06/13 03:04:20 by moerradi         ###   ########.fr        #
+#    Updated: 2021/06/13 20:32:32 by moerradi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 BON = checker
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 SRCS_GEN =  ps_validators.c  general_utils.c is_sorted.c mosa3ada.c	\
 			ps_ops.c ps_utils.c
 OBJS_GEN = $(SRCS_GEN:%.c=%.o)
