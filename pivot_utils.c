@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 20:21:40 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 02:09:14 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/15 14:06:47 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	swap_val(int *xp, int *yp)
 	*yp = temp;
 }
 
-static void	sort_array(int *arr, int len)
+void	sort_array(int *arr, int len)
 {
 	int	i;
 	int	j;

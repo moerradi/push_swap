@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 18:33:14 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 00:29:57 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/14 17:29:20 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	pop(t_stack **stack)
 	if (*stack == NULL)
 		return ;
 	temp = *stack;
-	*stack = (*stack)->next;
+	*stack = temp->next;
 	free(temp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 17:52:55 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 05:11:33 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/15 15:35:32 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	rrr(t_env *e);
 void	keep_pushing(t_stack **src, t_stack **dest, int chunk, char v);
 bool	solo_chunk(t_stack *stack);
 int		chunk_len(t_stack *stack, int chunk);
+t_stack	*stack_dup(t_stack *head);
 int		keep_rotating(t_stack **stack, int pivot, int dir, char v);
 int		keep_rotating2(t_stack **stack, int pivot, int dir, char v);
 int		optimize_rot(t_stack *stack, int pivot, int dir);
@@ -66,6 +67,8 @@ void	rev(t_stack **stack, int times, char v);
 int		get_pivot(t_stack *stack, int chunk);
 void	free_stack(t_stack **stack);
 void	sort_rest(t_stack **stack, int len, bool order, char name);
+void	sort_array(int *arr, int len);
+void	super_sort(t_env *e);
 void	go(t_env *e);
 
 #endif

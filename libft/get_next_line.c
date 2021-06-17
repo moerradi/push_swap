@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:56:29 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 20:56:39 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/14 17:23:31 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	get_next_line(int fd, char **line)
 	if (!(rest[fd]))
 		return (-1);
 	temp = ft_strchr_s(rest[fd], '\n');
-	if (temp > 0)
+	if (temp)
 		return (gnl_helper(temp, rest, line, fd));
 	else
 	{

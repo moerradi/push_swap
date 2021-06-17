@@ -6,13 +6,13 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 20:24:31 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 04:41:09 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/15 17:50:50 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*stack_dup(t_stack *head)
+t_stack	*stack_dup(t_stack *head)
 {
 	t_stack	*node;
 

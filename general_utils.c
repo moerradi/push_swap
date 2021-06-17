@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 12:57:09 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 20:19:44 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/14 17:35:11 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	exiterr(t_env *e)
 {
 	write(2, "Error\n", 6);
+	if (e->arr)
+		free(e->arr);
 	if (e->a)
 		free_stack(&e->a);
 	if (e->b)

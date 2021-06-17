@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:08:05 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 20:59:19 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/17 03:39:15 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 		exiterr(&e);
 	while (get_next_line(0, &line) > 0)
 	{
+		ft_putendl_fd(line, 1);
 		exec_ops(&e, line);
 		if (line)
 		{
@@ -69,10 +70,21 @@ int	main(int argc, char **argv)
 			line = NULL;
 		}
 	}
+	free(line);
+	ft_putnbr_fd(stack_size(e.a), 1);
+		ft_putendl_fd("", 1);
+
+	ft_putnbr_fd(is_sorted(e.a, 0), 1);
 	if (is_sorted(e.a, 0) && stack_size(e.a) == e.len)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
+		// ft_putendl_fd("", 1);
+
+	print_stack(e.a);
+	ft_putendl_fd("", 1);
+	print_stack(e.b);	
 	free_stacks(&e);
+	free(e.arr);
 	return (0);
 }
