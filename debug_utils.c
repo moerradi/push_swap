@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:10:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/13 02:10:46 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/22 06:17:59 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	print_stack(t_stack *stack)
 	while (temp)
 	{
 		ft_putnbr_fd(temp->n, 1);
+		ft_putstr_fd(": ", 1);
+		ft_putnbr_fd(temp->chunk, 1);
 		ft_putstr_fd(" ", 1);
 		temp = temp->next;
 	}

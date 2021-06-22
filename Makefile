@@ -6,7 +6,7 @@
 #    By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/05 13:23:46 by moerradi          #+#    #+#              #
-#    Updated: 2021/06/15 14:16:31 by moerradi         ###   ########.fr        #
+#    Updated: 2021/06/22 06:54:26 by moerradi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS_GEN =  ps_validators.c  general_utils.c is_sorted.c mosa3ada.c	\
 			ps_ops.c ps_utils.c debug_utils.c
 OBJS_GEN = $(SRCS_GEN:%.c=%.o)
 SRCS =  chunking_utils.c push_swap.c pivot_utils.c rotating_utils.c	\
-		sorting_algo.c sort_utils.c state_backtracking.c
+		sorting_algo.c sort_utils.c
 OBJS = $(SRCS:%.c=%.o)
 BON_SRCS = checker.c
 BON_OBJS=$(BON_SRCS:%.c=%.o)

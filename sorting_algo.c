@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:03:21 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/15 17:54:59 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/22 06:21:16 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	atob(t_env *e, int *chunk, int len)
 	int	pivot;
 
 	rn = 0;
-	if (len == 2)
+	if (len <= 3)
 		sort_rest(&e->a, len, 0, 'a');
 	else
 	{
@@ -66,7 +66,7 @@ void	btoa(t_env *e, int *chunk, int len)
 	rn = 0;
 	if (chunk_is_sorted(e->b, e->b->chunk, 1))
 		keep_pushing(&e->b, &e->a, e->b->chunk, 'a');
-	else if (len == 2)
+	else if (len <= 3)
 	{
 		sort_rest(&e->b, len, 1, 'b');
 		keep_pushing(&e->b, &e->a, e->b->chunk, 'a');

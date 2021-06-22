@@ -6,7 +6,7 @@
 /*   By: moerradi <moerradi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 16:01:53 by moerradi          #+#    #+#             */
-/*   Updated: 2021/06/15 23:29:52 by moerradi         ###   ########.fr       */
+/*   Updated: 2021/06/22 06:55:02 by moerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int	main(int argc, char **argv)
 	e.len = argc - 1;
 	e.arr = malloc(sizeof(int) * e.len);
 	if (argc < 2)
+	{
+		free(e.arr);
 		return (0);
+	}
 	if (!init(&e, argv))
 		exiterr(&e);
-	//go(&e);
-	super_sort(&e);
+	go(&e);
 	if (e.a)
 		free_stack(&e.a);
 	if (e.b)
